@@ -78,5 +78,27 @@ splits on whitespace but does not lowercase
 -language
 accounts for language specific stopwords and stemmings
 
+-this is how to do mapping and tell that year should be date and not to index all fields
+curl -XPUT 127.0.0.1:9200/movies -d '
+{
+  "movies" : {
+    "mappings" : {
+      "movie" : {
+        "_all" : {
+          "enabled" : false
+        },
+        "properties" : {
+          "year" : {
+            "type" : "date"
+          }
+        }
+      }
+    }
+  }
+}
+'
+
+-this is how to retrieve mapping
+curl -XGET 127.0.0.1:9200/movies/_mapping/movie?pretty
 
 
