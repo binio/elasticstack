@@ -55,4 +55,14 @@ curl -XPOU 127.0.0.1:9200/movies -d '"
 mapping can be used for field types:
 short, integer, boolead, string etc
 
+Three types of analyzers:
+- character filters
+remove character encodings & atc
+
+- tokenizers
+split strings on white space, dot, or any other character
+
+- token filters
+lowercasing, stemmings, synonyms etc
+
 
