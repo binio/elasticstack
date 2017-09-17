@@ -65,4 +65,18 @@ split strings on white space, dot, or any other character
 - token filters
 lowercasing, stemmings, synonyms etc
 
+TYPES OF ANALYZERS:
+- standard
+splits on word boundaries, removes punctation,lowercases, good choice if laguage is unknown
+
+- simple
+splits on anything that isnot letter and lowercased
+
+- whitespace
+splits on whitespace but does not lowercase
+
+-language
+accounts for language specific stopwords and stemmings
+
+
 
