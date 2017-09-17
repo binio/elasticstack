@@ -102,3 +102,58 @@ curl -XPUT 127.0.0.1:9200/movies -d '
 curl -XGET 127.0.0.1:9200/movies/_mapping/movie?pretty
 
 
+-inserting record into elastic index
+curl -XPUT 127.0.0.1:9200/movies/movie/109487 -d'
+{
+    "genre":["IMAX","Sci-Fi"],
+    "title":"Interstellar",
+    "year":2014
+}'
+
+response:
+{
+    "_index":"movies",
+    "_type":"movie",
+    "_id":"109487",
+    "_version":1,
+    "result":"created",
+    "_shards":{
+                "total":2,"successful":1,"failed":0
+                },
+    "created":true
+}
+
+-getting movies from index
+curl -XGET 127.0.0.1:9200/movies/movie/_search?pretty
+ response:
+ {
+   "took" : 108,
+   "timed_out" : false,
+   "_shards" : {
+     "total" : 5,
+     "successful" : 5,
+     "failed" : 0
+   },
+   "hits" : {
+     "total" : 1,
+     "max_score" : 1.0,
+     "hits" : [
+       {
+         "_index" : "movies",
+         "_type" : "movie",
+         "_id" : "109487",
+         "_score" : 1.0,
+         "_source" : {
+           "genre" : [
+             "IMAX",
+             "Sci-Fi"
+           ],
+           "title" : "Interstellar",
+           "year" : 2014
+         }
+       }
+     ]
+   }
+ }
+
+
