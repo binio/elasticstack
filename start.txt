@@ -40,4 +40,19 @@ curl -XGET '127.0.0.1:9200/shakespeare/_search?pretty' -d '
 
 
 //Creating mapping
-curl -XPOU 127.0.0.1:9200/movies -d ''
+//can be used for defining
+//Field types
+//Field index
+//Field analyzer
+
+curl -XPOU 127.0.0.1:9200/movies -d '"
+    properties: [
+     "user_id": {
+        "type":"long" 
+      } 
+     ]
+"'
+mapping can be used for field types:
+short, integer, boolead, string etc
+
+
