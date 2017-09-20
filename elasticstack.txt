@@ -1,17 +1,79 @@
 1. Getting Started with elastic stack
 created my_index with my_type
 IMPORTANT: authentication requires elastic user "elastic" not your email
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
 
 GET //searches the index
 https://8a315d300c3da9949e9ede48f9cf3bfd.us-east-1.aws.found.io:9243/my_index/my_type/_search?pretty
 
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
 POST //creates entry in index
 https://8a315d300c3da9949e9ede48f9cf3bfd.us-east-1.aws.found.io:9243/my_index/my_type
 {
     "title": "hello world", "tags": ["ruby","java"]
 }
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
 
 GET //shows all available indices
 https://8a315d300c3da9949e9ede48f9cf3bfd.us-east-1.aws.found.io:9243/_cat/indices/?v
 
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+GET //get non existent record
+https://8a315d300c3da9949e9ede48f9cf3bfd.us-east-1.aws.found.io:9243/my_index/my_type/10001
+{
+    "_index": "my_index",
+    "_type": "my_type",
+    "_id": "10001",
+    "found": false
+}
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+POST //add record with id
+https://8a315d300c3da9949e9ede48f9cf3bfd.us-east-1.aws.found.io:9243/my_index/my_type/1000
+{
+"title": "My Title with id 1000", "tags": ["ruby","php","java","c"]
+}
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+POST //edit record with existing id , then version changes
+https://8a315d300c3da9949e9ede48f9cf3bfd.us-east-1.aws.found.io:9243/my_index/my_type/1000
+{
+"title": "My Title with id 1000", "tags": ["ruby","php","java","c"]
+}
+response:
+{
+    "_index": "my_index",
+    "_type": "my_type",
+    "_id": "1000",
+    "_version": 2,
+    "result": "updated",
+    "_shards": {
+        "total": 2,
+        "successful": 1,
+        "failed": 0
+    },
+    "created": false
+}
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
 
+DELETE  //delete record with index id
+https://8a315d300c3da9949e9ede48f9cf3bfd.us-east-1.aws.found.io:9243/my_index/my_type/1001
+response:
+{
+    "found": true,
+    "_index": "my_index",
+    "_type": "my_type",
+    "_id": "1001",
+    "_version": 2,
+    "result": "deleted",
+    "_shards": {
+        "total": 2,
+        "successful": 1,
+        "failed": 0
+    }
+}
