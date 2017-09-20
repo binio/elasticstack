@@ -1,1 +1,17 @@
 1. Getting Started with elastic stack
+created my_index with my_type
+IMPORTANT: authentication requires elastic user "elastic" not your email
+
+GET //searches the index
+https://8a315d300c3da9949e9ede48f9cf3bfd.us-east-1.aws.found.io:9243/my_index/my_type/_search?pretty
+
+POST //creates entry in index
+https://8a315d300c3da9949e9ede48f9cf3bfd.us-east-1.aws.found.io:9243/my_index/my_type
+{
+    "title": "hello world", "tags": ["ruby","java"]
+}
+
+GET //shows all available indices
+https://8a315d300c3da9949e9ede48f9cf3bfd.us-east-1.aws.found.io:9243/_cat/indices/?v
+
+
