@@ -106,3 +106,33 @@ request body search:
 curl -XGET
 https://8a315d300c3da9949e9ede48f9cf3bfd.us-east-1.aws.found.io:9243/movies/movie/_search/?pretty -d'{"query" :{"match": {"title":"star"}}}'
 will query for title which has 'star'
+
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+
+
+{
+    "query":{
+        "bool":{
+            "must":{"term":{"title":"trek"}},
+            "filter":{"range":{"year":{"gte":2010}}}
+        }
+    }
+}
+boolean query
+curl -XGET
+https://8a315d300c3da9949e9ede48f9cf3bfd.us-east-1.aws.found.io:9243/movies/movie/_search/?pretty -d'{"bool":{"must":{"term":{"title":"trek"}},"filter":{"range":{"year":{"gte":2010}}}}}}'
+
+FILTERS
+----------
+term
+
+terms
+
+range
+
+exists
+
+missing
+
+bool
