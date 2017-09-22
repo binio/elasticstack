@@ -136,3 +136,30 @@ exists
 missing
 
 bool
+
+QUERIES
+----------
+match_all
+
+match
+
+multi_match
+
+bool
+
+---------------------------
+SLOP AND Pagination parameter queries
+
+{
+    "from":0,
+    "size":2,
+    "query":{
+	    "match_phrase":{
+		    "agent":{"query":"MAC 25.0", "slop":5}
+		}
+	}
+}
+
+slop let search terms which are not close to each other the greater SLOP the further search goes for second term
+
+------------------------------
