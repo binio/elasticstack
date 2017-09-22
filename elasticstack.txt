@@ -161,5 +161,7 @@ SLOP AND Pagination parameter queries
 }
 
 slop let search terms which are not close to each other the greater SLOP the further search goes for second term
+ -deep pagination can kill performance
+ -enforce upper bound how many result to retrieve to users
 
 ------------------------------
